@@ -1,7 +1,7 @@
 /* Formatted on 2013/02/07 11:57:36 PM (QP5 v5.126.903.23003) */
 set define off
 
-CREATE OR REPLACE PROCEDURE refresh_historical_data
+CREATE OR REPLACE PROCEDURE at_refresh_historical_data
 IS
    http_req           UTL_HTTP.req;
    http_resp          UTL_HTTP.resp;

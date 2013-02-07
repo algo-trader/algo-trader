@@ -1,5 +1,5 @@
 /* Formatted on 2013/02/08 12:38:14 AM (QP5 v5.126.903.23003) */
-CREATE OR REPLACE PROCEDURE dacheng.decode_raw_csv
+CREATE OR REPLACE PROCEDURE at_decode_raw_csv
 IS
 BEGIN
    UPDATE   historical_price
