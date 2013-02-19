@@ -1,8 +1,9 @@
-/* Formatted on 2013/02/08 1:27:22 AM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/19 3:49:35 PM (QP5 v5.126.903.23003) */
 CREATE TABLE at_hist_price
 (
    ticker      VARCHAR2 (100 BYTE)
  , day         DATE
+ , day_seq     INTEGER
  , open        NUMBER
  , high        NUMBER
  , low         NUMBER

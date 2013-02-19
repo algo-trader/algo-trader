@@ -1,4 +1,4 @@
-/* Formatted on 2013/02/08 3:37:15 AM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/19 3:56:11 PM (QP5 v5.126.903.23003) */
 set define off
 
 CREATE OR REPLACE PROCEDURE at_p_hist_price_refresh_full (v_num_months INTEGER)
@@ -171,5 +171,18 @@ BEGIN
             END;
       END load_each_ticker;
    END LOOP;
+
+   MERGE INTO   at_hist_price a
+        USING   (SELECT   s.ticker
+                        , s.day
+                        , s.ROWID AS row_id
+                        , ROW_NUMBER () OVER (PARTITION BY ticker ORDER BY day) AS day_seq
+                   FROM   at_hist_price s) v
+           ON   (a.ROWID = v.row_id)
+   WHEN MATCHED
+   THEN
+      UPDATE SET a.day_seq = v.day_seq;
+
+   COMMIT;
 END;
 /
