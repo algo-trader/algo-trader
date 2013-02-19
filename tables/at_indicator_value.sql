@@ -1,9 +1,10 @@
-/* Formatted on 2013/02/19 7:13:52 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/19 8:52:12 PM (QP5 v5.126.903.23003) */
 CREATE TABLE at_indicator_value
 (
    ticker            VARCHAR2 (100 BYTE)
  , day_seq           INTEGER
- , INDICATOR         VARCHAR2 (100 BYTE)
+ , indicator_name    VARCHAR2 (100 BYTE)
+ , indicator_key     VARCHAR (100 BYTE)
  , indicator_value   NUMBER
 );
 
@@ -13,10 +14,11 @@ CREATE UNIQUE INDEX at_indicator_value_pk
    (
       ticker
     , day_seq
-    , INDICATOR
+    , indicator_name
+    , indicator_key
    );
 
 ALTER TABLE at_indicator_value ADD (
   CONSTRAINT at_indicator_value_pk
  PRIMARY KEY
- (ticker, day_seq, INDICATOR));
+ (ticker, day_seq, indicator_name, indicator_key));
