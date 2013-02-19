@@ -1,10 +1,11 @@
-/* Formatted on 2013/02/19 6:52:44 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/19 9:01:26 PM (QP5 v5.126.903.23003) */
 CREATE OR REPLACE PROCEDURE at_p_rsi
 (
    v_ticker      VARCHAR2
  , v_smooth_n    INTEGER
 )
 IS
+   v_indicator_name   VARCHAR2 (1000) := 'RSI(' || v_smooth_n || ')';
 BEGIN
    EXECUTE IMMEDIATE ('truncate table at_rsi_temp');
 
@@ -90,18 +91,20 @@ BEGIN
 
    DELETE FROM   at_indicator_value
          WHERE   ticker = v_ticker
-                 AND INDICATOR = 'RSI(' || v_smooth_n || ')';
+                 AND indicator_name = v_indicator_name;
 
    INSERT INTO at_indicator_value
               (
                   ticker
                 , day_seq
-                , INDICATOR
+                , indicator_name
+                , indicator_key
                 , indicator_value
               )
       (SELECT   ticker
               , day_seq
-              , 'RSI(' || v_smooth_n || ')'
+              , v_indicator_name
+              , 'RSI'
               , rsi
          FROM   at_rsi_temp);
 
