@@ -176,7 +176,7 @@ BEGIN
         USING   (SELECT   s.ticker
                         , s.day
                         , s.ROWID AS row_id
-                        , ROW_NUMBER () OVER (PARTITION BY ticker ORDER BY day) AS day_seq
+                        , ROW_NUMBER () OVER (PARTITION BY ticker ORDER BY day desc) * (-1)+1 AS day_seq
                    FROM   at_hist_price s) v
            ON   (a.ROWID = v.row_id)
    WHEN MATCHED
