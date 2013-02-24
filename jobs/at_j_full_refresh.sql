@@ -7,7 +7,7 @@ BEGIN
       job         => x
     , what        => 'begin at_p_hist_price_refresh_full(120); end;'
     , next_date   => SYSDATE
-    , interval    => 'TRUNC(SYSDATE+7)'
+    , interval    => 'TRUNC(SYSDATE+1)'
     , no_parse    => FALSE
    );
    sys.DBMS_OUTPUT.put_line ('Job Number is: ' || TO_CHAR (x));
