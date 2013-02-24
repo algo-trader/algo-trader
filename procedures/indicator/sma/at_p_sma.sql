@@ -26,7 +26,7 @@ BEGIN
                , AVG (r.close)
           FROM   at_hist_price curr
                , at_hist_price r
-         WHERE       curr.ticker = 'AAPL'
+         WHERE       curr.ticker = v_ticker
                  AND curr.ticker = r.ticker
                  AND r.day_seq BETWEEN curr.day_seq - 50 + 1 AND curr.day_seq
       GROUP BY   curr.ticker
