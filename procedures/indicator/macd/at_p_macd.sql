@@ -1,10 +1,16 @@
-/* Formatted on 2013/02/19 8:54:40 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/24 1:28:56 PM (QP5 v5.126.903.23003) */
+set define off
+
+/*
+most common params: 12,26,9
+*/
+
 CREATE OR REPLACE PROCEDURE at_p_macd
 (
    v_ticker      VARCHAR2
- , v_ema_1_n     INTEGER
- , v_ema_2_n     INTEGER
- , v_signal_n    INTEGER
+ , v_ema_1_n     INTEGER -- 12
+ , v_ema_2_n     INTEGER -- 26
+ , v_signal_n    INTEGER -- 9
 )
 IS
    v_indicator_name   VARCHAR2 (1000) := 'MACD(' || v_ema_1_n || ',' || v_ema_2_n || ',' || v_signal_n || ')';
@@ -20,8 +26,8 @@ BEGIN
               )
       SELECT   ema_1.ticker
              , ema_1.day_seq
-             , ema_1.ema ema_12
-             , ema_2.ema ema_26
+             , ema_1.ema ema_1
+             , ema_2.ema ema_2
         FROM   (SELECT   ticker
                        , day_seq
                        , close

@@ -1,4 +1,10 @@
-/* Formatted on 2013/02/19 9:01:26 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/24 1:29:43 PM (QP5 v5.126.903.23003) */
+set define off
+
+/*
+common params: 14
+*/
+
 CREATE OR REPLACE PROCEDURE at_p_rsi
 (
    v_ticker      VARCHAR2

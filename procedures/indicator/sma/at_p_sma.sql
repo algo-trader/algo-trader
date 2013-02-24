@@ -1,4 +1,6 @@
-/* Formatted on 2013/02/19 9:39:56 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/24 1:26:12 PM (QP5 v5.126.903.23003) */
+set define off
+
 CREATE OR REPLACE PROCEDURE at_p_sma
 (
    v_ticker    VARCHAR2
@@ -28,7 +30,7 @@ BEGIN
                , at_hist_price r
          WHERE       curr.ticker = v_ticker
                  AND curr.ticker = r.ticker
-                 AND r.day_seq BETWEEN curr.day_seq - 50 + 1 AND curr.day_seq
+                 AND r.day_seq BETWEEN curr.day_seq - v_period + 1 AND curr.day_seq
       GROUP BY   curr.ticker
                , curr.day_seq;
 

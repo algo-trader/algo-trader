@@ -1,4 +1,6 @@
-/* Formatted on 2013/02/19 9:55:23 PM (QP5 v5.126.903.23003) */
+/* Formatted on 2013/02/24 1:24:36 PM (QP5 v5.126.903.23003) */
+set define off
+
 CREATE OR REPLACE PROCEDURE at_p_ema
 (
    v_ticker      VARCHAR2

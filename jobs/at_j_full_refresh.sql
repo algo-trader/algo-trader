@@ -5,7 +5,7 @@ BEGIN
    sys.DBMS_JOB.submit
    (
       job         => x
-    , what        => 'begin at_p_hist_price_refresh_full(120); end;'
+    , what        => 'begin for stock in (select * from at_stock) loop at_p_hist_price_refresh_full(stock.ticker, 120); end loop; end;'
     , next_date   => SYSDATE
     , interval    => 'TRUNC(SYSDATE+1)'
     , no_parse    => FALSE
